@@ -1,6 +1,10 @@
+# Standard Python library imports
 from datetime import datetime, timedelta
-from dateutil.relativedelta import relativedelta
 import re
+
+# Third party libraries imports
+from dateutil.relativedelta import relativedelta
+
 
 def format_current_date():
     """
@@ -137,7 +141,16 @@ def calculate_months_to_consider(num_months):
     -------
     list of str
         List of months in 'MM-YYYY' format.
+
+    Raises
+    ------
+    ValueError
+        If num_months is not a positive integer.
     """
+    # We do not accept strings or negative numbers
+    if not isinstance(num_months, int) or num_months <= 0:
+        raise ValueError("num_months must be a positive integer.")
+
     # We find current date and obtain the current month and year
     current_date = datetime.now()
     months_years = [current_date.strftime("%m-%Y")]

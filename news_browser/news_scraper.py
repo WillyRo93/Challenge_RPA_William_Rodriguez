@@ -1,15 +1,23 @@
+# Standard Python library imports
 import time
+
+# Third party libraries imports
 from bs4 import BeautifulSoup
 from RPA.Browser.Selenium import Selenium
 # from RPA.Browser.Selenium import exec_javascript
 # from RPA.Excel.Files import ExcelFile
+from RPA.Robocorp.WorkItems import WorkItems
+
+# Local module imports
 from .my_logger import logger
 from .utils import (
-        format_current_date, convert_date_to_mm_aaaa,
-        word_counter, does_it_contain_money,
-        calculate_months_to_consider
+    format_current_date,
+    convert_date_to_mm_aaaa,
+    word_counter,
+    does_it_contain_money,
+    calculate_months_to_consider
 )
-from RPA.Robocorp.WorkItems import WorkItems
+
 
 class NewsScraper:
     """

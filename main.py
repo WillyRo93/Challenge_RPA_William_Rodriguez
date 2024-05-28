@@ -1,7 +1,9 @@
+# Third party libraries imports
+from robocorp.tasks import task
+
+# Local module imports
 from news_browser.browser import NewsBrowser
 from news_browser.my_logger import logger
-
-from robocorp.tasks import task
 
 @task
 def main():
