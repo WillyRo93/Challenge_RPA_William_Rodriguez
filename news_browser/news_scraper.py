@@ -201,7 +201,7 @@ class NewsScraper:
                     #     logger.warning("Or the Search was done previously when clicking the topic")
                     #     logger.warning(f"Did not find the 'Apply' button: {e}")
 
-                    # return True
+                    return True
             
             # We declare the variable 'topic_element' as False, because if the procces did not previously returned
             # a True value, then it is because there was not match found for the topic
