@@ -69,7 +69,7 @@ class NewsScraper:
         # This is because some searches may find nothing and that needs to be catched
         try:
             no_results_locator = "css:search-results-module-no-results"
-            self.browser.wait_until_element_is_visible(no_results_locator)
+            self.browser.wait_until_element_is_visible(no_results_locator, timeout = 20)
             inner_text = self.browser.get_text(no_results_locator)
             logger.info(inner_text)
             time.sleep(1)
@@ -91,13 +91,13 @@ class NewsScraper:
 
         # We try to locate the search button and input
         search_button = 'css:button[data-element="search-button"]'
-        self.browser.wait_until_element_is_visible(search_button)
+        self.browser.wait_until_element_is_visible(search_button, timeout=20)
         self.browser.click_element(search_button)
         logger.info("We found the search locator and we clicked on it")
         time.sleep(1)
 
         search_input = 'css:input[data-element="search-form-input"]'
-        self.browser.wait_until_element_is_visible(search_input)
+        self.browser.wait_until_element_is_visible(search_input, timeout=20)
         self.browser.click_element(search_input)
         self.browser.press_keys(search_input, search_phrase + "\n")
         logger.info(f"We found the input locator and we searched '{search_phrase}'")
@@ -128,7 +128,7 @@ class NewsScraper:
 
         # The topics are hidden by an element, so we click on 'See All' button to see all topics
         see_all_button = "css:span.see-all-text"
-        self.browser.wait_until_element_is_visible(see_all_button)
+        self.browser.wait_until_element_is_visible(see_all_button, timeout=20)
         self.browser.click_element(see_all_button)
         logger.info("We succesfully clicked the 'See all' button")
         time.sleep(1)
@@ -136,7 +136,7 @@ class NewsScraper:
         # Here we obtain all data contained on the 'topic box'.
         # Thats how I called it, a box that contains all topics
         topics_box = "css:ul.search-filter-menu"
-        self.browser.wait_until_element_is_visible(topics_box)
+        self.browser.wait_until_element_is_visible(topics_box, timeout=20)
         topics_box = self.browser.get_webelement(topics_box)
         logger.info("We succesfully found the box with all the topics")
         logger.debug(f"topics_box = {topics_box}")
@@ -241,7 +241,7 @@ class NewsScraper:
 
         # For kind of debug, we obtain the number of pages that the search returns
         number_of_pages = "css:div.search-results-module-page-counts"
-        self.browser.wait_until_element_is_visible(number_of_pages)
+        self.browser.wait_until_element_is_visible(number_of_pages, timeoput=20)
         number_of_pages = self.browser.get_webelement(number_of_pages)
         logger.info(f"Number of pages for searching '{search_phrase}' with the topic '{news_category}': {number_of_pages}")
 
@@ -252,7 +252,7 @@ class NewsScraper:
 
             # Here we obtain all the news info whic is contained in some kind of box (I say it is kind of a box)
             news_box = "class:search-results-module-results-menu"
-            self.browser.wait_until_element_is_visible(news_box)
+            self.browser.wait_until_element_is_visible(news_box, timeout=20)
             news_box = self.browser.get_webelement(news_box)
             logger.info("Succesfully obtained the WebElement that contains the news")
             logger.debug(f"news_box = {news_box}")
@@ -314,7 +314,7 @@ class NewsScraper:
             # We proceed to click the next page element, so we clearly go to the next page.
             if all(item['bool'] for item in news_data) and page_number < max_pages:
                 next_page = "class:search-results-module-next-page"
-                self.browser.wait_until_element_is_visible(next_page)
+                self.browser.wait_until_element_is_visible(next_page, timeout=20)
                 self.browser.click_element(next_page)
                 logger.info("Succesfully clicked the 'Next Page' button")
                 time.sleep(5)
