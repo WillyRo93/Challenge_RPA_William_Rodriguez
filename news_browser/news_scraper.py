@@ -238,6 +238,7 @@ class NewsScraper:
 
         # We call the function to return us what months and years will be considered for the scraping
         months_to_consider = calculate_months_to_consider(num_months)
+        logger.info(months_to_consider)
 
         # For kind of debug, we obtain the number of pages that the search returns
         number_of_pages = "css:div.search-results-module-page-counts"
