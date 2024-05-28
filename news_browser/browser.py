@@ -95,7 +95,7 @@ class NewsBrowser:
         # We will have a maximum of 3 retries, in my experience when scraping, more than 5 retries
         # is a bit too much, because something must be wrong in the code or in the site
         # After the maximum tries it could be nice to send an email or any way of notification
-        max_retries = 2
+        max_retries = 5
         retries = 0
         success = False
 
