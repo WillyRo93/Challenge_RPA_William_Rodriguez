@@ -68,7 +68,7 @@ class NewsScraper:
         # Here we try to obtain the element that contains 'There are not any results that match ...'
         # This is because some searches may find nothing and that needs to be catched
         try:
-            no_results_locator = "css:search-results-module-no-results"
+            no_results_locator = "class:search-results-module-no-results"
             self.browser.wait_until_element_is_visible(no_results_locator, timeout = 20)
             inner_text = self.browser.get_text(no_results_locator)
             logger.info(inner_text)
