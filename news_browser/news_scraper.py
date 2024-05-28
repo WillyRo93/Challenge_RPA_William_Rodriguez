@@ -63,7 +63,7 @@ class NewsScraper:
             no_results_locator = "css:search-results-module-no-results"
             self.browser.wait_until_element_is_visible(no_results_locator)
             inner_text = self.browser.get_text(no_results_locator)
-            logger.debug(inner_text)
+            logger.info(inner_text)
             time.sleep(1)
             return "There are not any results that match" in inner_text
         except:
