@@ -191,17 +191,17 @@ class NewsScraper:
                     # We try to click the apply button, if we cant its mostly because it was not needed
                     # Sometimes the site, when clicking the topic box, starts the search automatically
                     # Some other times, it does not, so we click the apply button if it is visible.
-                    try:
-                        apply_button = "css:button.button.apply-button"
-                        self.browser.click_element(apply_button)
-                        logger.info("We succesfully clicked the 'apply' button")
-                        time.sleep(3)
-                    except Exception as e:
-                        logger.warning("Maybe we could not find the 'Apply' button")
-                        logger.warning("Or the Search was done previously when clicking the topic")
-                        logger.warning(f"Did not find the 'Apply' button: {e}")
+                    # try:
+                    #     apply_button = "css:button.button.apply-button"
+                    #     self.browser.click_element(apply_button)
+                    #     logger.info("We succesfully clicked the 'apply' button")
+                    #     time.sleep(3)
+                    # except Exception as e:
+                    #     logger.warning("Maybe we could not find the 'Apply' button")
+                    #     logger.warning("Or the Search was done previously when clicking the topic")
+                    #     logger.warning(f"Did not find the 'Apply' button: {e}")
 
-                    return True
+                    # return True
             
             # We declare the variable 'topic_element' as False, because if the procces did not previously returned
             # a True value, then it is because there was not match found for the topic
