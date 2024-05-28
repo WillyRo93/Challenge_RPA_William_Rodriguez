@@ -191,15 +191,15 @@ class NewsScraper:
                     # We try to click the apply button, if we cant its mostly because it was not needed
                     # Sometimes the site, when clicking the topic box, starts the search automatically
                     # Some other times, it does not, so we click the apply button if it is visible.
-                    # try:
-                    #     apply_button = "css:button.button.apply-button"
-                    #     self.browser.click_element(apply_button)
-                    #     logger.info("We succesfully clicked the 'apply' button")
-                    #     time.sleep(3)
-                    # except Exception as e:
-                    #     logger.warning("Maybe we could not find the 'Apply' button")
-                    #     logger.warning("Or the Search was done previously when clicking the topic")
-                    #     logger.warning(f"Did not find the 'Apply' button: {e}")
+                    try:
+                        apply_button = "css:button.button.apply-button"
+                        self.browser.click_element(apply_button)
+                        logger.info("We succesfully clicked the 'apply' button")
+                        time.sleep(3)
+                    except Exception as e:
+                        logger.warning("Maybe we could not find the 'Apply' button")
+                        logger.warning("Or the Search was done previously when clicking the topic")
+                        logger.warning(f"Did not find the 'Apply' button: {e}")
 
                     return True
             
@@ -242,7 +242,7 @@ class NewsScraper:
 
         # For kind of debug, we obtain the number of pages that the search returns
         number_of_pages = "css:div.search-results-module-page-counts"
-        self.browser.wait_until_element_is_visible(number_of_pages, timeoput=20)
+        self.browser.wait_until_element_is_visible(number_of_pages, timeout=20)
         number_of_pages = self.browser.get_webelement(number_of_pages)
         logger.info(f"Number of pages for searching '{search_phrase}' with the topic '{news_category}': {number_of_pages}")
 
