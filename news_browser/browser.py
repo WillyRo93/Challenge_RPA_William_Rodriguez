@@ -81,15 +81,10 @@ class NewsBrowser:
         news_category = variables.get("news_category")
         num_months = variables.get("num_months")
 
-        # if os.name == "nt":
+        # if os.name == "nt" or os.name =="posix":
         #     search_phrase = "Trump/"
         #     news_category = "World & Nation"
         #     num_months = 1
-        # else:
-        #     variables = self.workitems.get_work_item_variables()
-        #     search_phrase = variables.get("search_phrase")
-        #     news_category = variables.get("news_category")
-        #     num_months = variables.get("num_months")
 
         input_data_to_print = {
             "search_phrase": search_phrase,

@@ -105,15 +105,11 @@ You just need to go to the `news_browser/browser.py` and:
 
 - Uncomment this other lines:
 
-        # if os.name == "nt":
+        # if os.name == "nt" or os.name =="posix:
         #     search_phrase = "old trafford"
         #     news_category = "2007 California Wildfires"
         #     num_months = 1000
-        # else:
-        #     variables = self.workitems.get_work_item_variables()
-        #     search_phrase = variables.get("search_phrase")
-        #     news_category = variables.get("news_category")
-        #     num_months = variables.get("num_months")
+
 
 That should be enough for you to test it correctly :)
 
