@@ -295,6 +295,7 @@ class NewsScraper:
                 image_tag = item.find('img', class_='image')
                 image_url = image_tag.get("src") if image_tag else "N/A"
                 image_alt = image_tag.get("alt") if image_tag else "N/A"
+                image_path = f"output/news{index}.jpg" if image_tag else "N/A"
 
                 formatted_date = convert_date_to_mm_aaaa(my_date)
                 boolean = formatted_date in months_to_consider
@@ -302,15 +303,15 @@ class NewsScraper:
                 news_data.append({
                     "title": title,
                     "date": my_date,
-                    "description": desc,
+                    "description": desc, 
                     'image_url': image_url,
                     'image_alt': image_alt,
                     "phrase_matches": match_count,
                     "contain_money": contain_money,
                     "news_name": f"news{index}",
-                    "image_path": f"output/imgs/news{index}.jpg",
+                    "image_path": image_path,
                     "excel_filename": f"output/excel_files/news{index}.xlsx",
-                    "bool": boolean
+                    "bool": boolean 
                 })
 
                 index += 1
