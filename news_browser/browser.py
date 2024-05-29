@@ -73,21 +73,21 @@ class NewsBrowser:
         """
         logger.info("Starting 'run' function")
 
-        # # Obtaining WorkItem Data
-        # variables = self.workitems.get_work_item_variables()
-        # search_phrase = variables.get("search_phrase")
-        # news_category = variables.get("news_category")
-        # num_months = variables.get("num_months")
+        # Obtaining WorkItem Data
+        variables = self.workitems.get_work_item_variables()
+        search_phrase = variables.get("search_phrase")
+        news_category = variables.get("news_category")
+        num_months = variables.get("num_months")
 
-        if os.name == "nt":
-            search_phrase = "Baseball"
-            news_category = "Politics"
-            num_months = 10
-        else:
-            variables = self.workitems.get_work_item_variables()
-            search_phrase = variables.get("search_phrase")
-            news_category = variables.get("news_category")
-            num_months = variables.get("num_months")
+        # if os.name == "nt":
+        #     search_phrase = "old trafford"
+        #     news_category = "2007 California Wildfires"
+        #     num_months = 1000
+        # else:
+        #     variables = self.workitems.get_work_item_variables()
+        #     search_phrase = variables.get("search_phrase")
+        #     news_category = variables.get("news_category")
+        #     num_months = variables.get("num_months")
 
         news_url = "https://www.latimes.com/"
         self.open_news_site(news_url)
