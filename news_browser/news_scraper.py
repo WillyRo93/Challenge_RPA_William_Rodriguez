@@ -201,6 +201,8 @@ class NewsScraper:
                         logger.warning("Or the Search was done previously when clicking the topic")
                         logger.warning(f"Did not find the 'Apply' button: {e}")
 
+                    # Here, we return True because we found a match for the topic
+                    #So, there is no reason to keep looking for topic matches.
                     return True
             
             # We declare the variable 'topic_element' as False, because if the procces did not previously returned
@@ -241,10 +243,15 @@ class NewsScraper:
         logger.info(months_to_consider)
 
         # For kind of debug, we obtain the number of pages that the search returns
-        number_of_pages = "css:div.search-results-module-page-counts"
-        self.browser.wait_until_element_is_visible(number_of_pages, timeout=20)
-        number_of_pages = self.browser.get_webelement(number_of_pages)
-        logger.info(f"Number of pages for searching '{search_phrase}' with the topic '{news_category}': {number_of_pages}")
+        try:
+            number_of_pages = "css:div.search-results-module-page-counts"
+            self.browser.wait_until_element_is_visible(number_of_pages, timeout=20)
+            number_of_pages = self.browser.get_webelement(number_of_pages)
+            logger.info(f"Number of pages for searching '{search_phrase}' with the topic '{news_category}': {number_of_pages}")
+        except Exception as e:
+            logger.warning(f"Maybe searching for '{search_phrase} on the topic '{news_category}' found only one page")
+            logger.warning(f"Did not find the 'Number of pages' text: {e}")
+        #return True
 
         # We initialize the index in 1 because is easer to debug and find the news in the files later manually
         # (At least it is easier for me)
