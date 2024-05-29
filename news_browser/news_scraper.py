@@ -257,7 +257,7 @@ class NewsScraper:
         # We initialize the index in 1 because is easer to debug and find the news in the files later manually
         # (At least it is easier for me)
         for page_number in range(1, max_pages + 1):
-            logger.info(f"Currently on the page number {number_of_pages}")
+            # logger.info(f"Currently on the page number {number_of_pages}")
 
             # Here we obtain all the news info whic is contained in some kind of box (I say it is kind of a box)
             news_box = "class:search-results-module-results-menu"
