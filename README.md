@@ -203,6 +203,13 @@ In the Workspace you will find 2 different Tasks and 2 different Processes:
         "num_months": -10
     }
     ```
+    ```
+    {
+        "search_phrase": "Trump/",
+        "news_category": "World & Nation",
+        "num_months": 1
+    }
+    ```
 
 ## Possible Improvements or Suggestions/Feedback
 
