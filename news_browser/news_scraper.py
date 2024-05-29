@@ -247,6 +247,7 @@ class NewsScraper:
             number_of_pages = "css:div.search-results-module-page-counts"
             self.browser.wait_until_element_is_visible(number_of_pages, timeout=20)
             number_of_pages = self.browser.get_webelement(number_of_pages)
+            number_of_pages = self.browser.get_text(number_of_pages)
             logger.info(f"Number of pages for searching '{search_phrase}' with the topic '{news_category}': {number_of_pages}")
         except Exception as e:
             logger.warning(f"Maybe searching for '{search_phrase} on the topic '{news_category}' found only one page")
