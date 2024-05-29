@@ -125,7 +125,6 @@ In the Workspace you will find 2 different Tasks and 2 different Processes:
 - Processes
     - Challenge Process (The main Process, the one you should run)
     - Dev Process (The dev Process, you can run it but it is mainly for debugging before I post the changes to the main branch on GitHub)
-    
 
 <!--### Clases y Funciones-->
 
@@ -145,6 +144,63 @@ In the Workspace you will find 2 different Tasks and 2 different Processes:
 
 <!--- **Decisión 1**: Opté por usar [patrón de diseño/tecnología] debido a [razones].-->
 <!--- **Decisión 2**: Implementé [función/característica] de esta manera porque [razones].-->
+
+### Inputs to try
+- A search that can not find anything:
+    ```
+    {
+        "search_phrase": "sdsdfdsf",
+        "news_category": "Sports",
+        "num_months": 5
+    }
+    ```
+- A search that can not find the topic
+    ```
+    {
+        "search_phrase": "Messi",
+        "news_category": "sdfdfsgds",
+        "num_months": 5
+    }
+    ```
+- A search that finds only one page
+    ```
+    {
+        "search_phrase": "Hello Kitty",
+        "news_category": "Podcasts",
+        "num_months": 20
+    }
+    ```
+- A search that can not find a single image from any of the news found:
+    ```
+    {
+        "search_phrase": "old trafford",
+        "news_category": "2007 California Wildfires",
+        "num_months": 1000
+    }
+    ```
+- A search that goes to the free limit (Since we need a subscription to read more than 10 pages)
+    ```
+    {
+        "search_phrase": "Trump",
+        "news_category": "Politics",
+        "num_months": 10
+    }
+    ```
+- Searches to try to break the code:
+    ```
+    {
+        "search_phrase": "Trump",
+        "news_category": "Politics",
+        "num_months": "ten pages"
+    }
+    ```
+    ```
+    {
+        "search_phrase": "Trump",
+        "news_category": "Politics",
+        "num_months": -10
+    }
+    ```
 
 ## Possible Improvements or Suggestions/Feedback
 
