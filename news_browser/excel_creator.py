@@ -98,8 +98,9 @@ class ExcelCreator:
                 row_num += 1
 
 
-        # Cleaning the search_phrase because you can try to break my code putting a "/" on the search or something :O
+        # Cleaning the search_phrase and the news_category so we can name the file properly
         search_phrase = clean_text(search_phrase)
+        news_category = clean_text(news_category)
 
         # Saving the Excel File
         excel_filename = f"{self.excel_files_dir}{search_phrase}_{news_category}_{num_months}.xlsx"
