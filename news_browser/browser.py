@@ -61,7 +61,8 @@ class NewsBrowser:
         """
         logger.info("Starting 'open_news_site' function")
         self.browser.open_available_browser(url, headless=False,
-                                            options={"--disable-gpu", "--disable-software-rasterizer"})
+                                            options={"--disable-gpu", "--disable-software-rasterizer"}
+        )
         logger.info(f"Opening Website")
         time.sleep(10)
 
