@@ -161,9 +161,41 @@ def calculate_months_to_consider(num_months):
         months_years.append(date_to_add.strftime("%m-%Y"))
     return months_years
 
-def clean_text(text):    
+def clean_text(text):
+    """
+    Cleans the text from any special character.
+
+    Parameters
+    ----------
+    text : str
+        The text to clean.
+
+    Returns
+    -------
+    clean_text
+        The text already clean.
+    """ 
     # Remove special characters and spaces
     clean_text = re.sub(r'[^\w\s]', '', text)
     clean_text = re.sub(r'\s+', '', clean_text)
     
     return clean_text
+
+def validate_input(data):
+    """
+    Checks if the text contains any monetary values.
+
+    Parameters
+    ----------
+    data : dict
+        A dictionary with the input data.
+
+    Returns
+    -------
+    bool
+        True if the dictionary contains a valid value for num_months, False otherwise.
+    """
+    if isinstance(data["num_months"], int) and data["num_months"] >= 0:
+        return True
+    else:
+        return False

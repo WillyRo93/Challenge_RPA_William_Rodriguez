@@ -247,6 +247,7 @@ class NewsScraper:
             number_of_pages = "css:div.search-results-module-page-counts"
             self.browser.wait_until_element_is_visible(number_of_pages, timeout=20)
             number_of_pages = self.browser.get_webelement(number_of_pages)
+            number_of_pages = self.browser.get_text(number_of_pages)
             logger.info(f"Number of pages for searching '{search_phrase}' with the topic '{news_category}': {number_of_pages}")
         except Exception as e:
             logger.warning(f"Maybe searching for '{search_phrase} on the topic '{news_category}' found only one page")
@@ -256,7 +257,7 @@ class NewsScraper:
         # We initialize the index in 1 because is easer to debug and find the news in the files later manually
         # (At least it is easier for me)
         for page_number in range(1, max_pages + 1):
-            logger.info(f"Currently on the page number {page_number} of {number_of_pages}")
+            logger.info(f"Currently on the page number {number_of_pages}")
 
             # Here we obtain all the news info whic is contained in some kind of box (I say it is kind of a box)
             news_box = "class:search-results-module-results-menu"
