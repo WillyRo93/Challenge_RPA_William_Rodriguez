@@ -160,3 +160,10 @@ def calculate_months_to_consider(num_months):
         date_to_add = current_date - relativedelta(months=i)
         months_years.append(date_to_add.strftime("%m-%Y"))
     return months_years
+
+def clean_text(text):    
+    # Remove special characters and spaces
+    clean_text = re.sub(r'[^\w\s]', '', text)
+    clean_text = re.sub(r'\s+', '', clean_text)
+    
+    return clean_text

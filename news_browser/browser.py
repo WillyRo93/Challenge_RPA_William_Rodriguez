@@ -80,9 +80,9 @@ class NewsBrowser:
         num_months = variables.get("num_months")
 
         # if os.name == "nt":
-        #     search_phrase = "old trafford"
-        #     news_category = "2007 California Wildfires"
-        #     num_months = 1000
+        #     search_phrase = "Trump/ clash"
+        #     news_category = "World & Nation"
+        #     num_months = 5
         # else:
         #     variables = self.workitems.get_work_item_variables()
         #     search_phrase = variables.get("search_phrase")
@@ -125,5 +125,5 @@ class NewsBrowser:
             time.sleep(1)
 
             excel_creator = ExcelCreator()
-            excel_creator.create_excel(news_data)
+            excel_creator.create_excel(news_data, search_phrase, news_category, num_months)
             time.sleep(1)

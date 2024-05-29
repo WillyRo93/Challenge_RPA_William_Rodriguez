@@ -8,6 +8,7 @@ from openpyxl.drawing.image import Image
 
 # Local module imports
 from .my_logger import logger
+from .utils import clean_text
 
 
 class ExcelCreator:
@@ -48,7 +49,7 @@ class ExcelCreator:
             os.remove(f)
         logger.info(f"All previous Excel Files from {self.excel_files_dir} directory cleared")
 
-    def create_excel(self, news_data):
+    def create_excel(self, news_data, search_phrase, news_category, num_months):
         """
         Creates a single Excel file containing all the news data.
 
@@ -96,7 +97,12 @@ class ExcelCreator:
                 # Increase the row number for the next news
                 row_num += 1
 
-        # Saving the Excel File
-        wb.save(f"{self.excel_files_dir}all_news_data.xlsx")
 
-        logger.info("Single Excel file created with all news data")
+        # Cleaning the search_phrase because you can try to break my code putting a "/" on the search or something :O
+        search_phrase = clean_text(search_phrase)
+
+        # Saving the Excel File
+        excel_filename = f"{self.excel_files_dir}{search_phrase}_{news_category}_{num_months}.xlsx"
+        wb.save(excel_filename)
+
+        logger.info(f"Single Excel file named {excel_filename} created with all news data")
