@@ -66,6 +66,11 @@ class ImageDownloader:
         if not any(item["bool"] for item in news_data):
             logger.info("No news items of interest. No images downloaded.")
             return
+        
+        # Check if all image paths are "N/A"
+        if all(item.get("image_path") == "N/A" for item in news_data):
+            logger.info("All image paths are 'N/A'. No images downloaded.")
+            return
 
         logger.info("Creating the necessary Image Files")
         # Once we have the "news_data" list of dictionaries, we iterate over it
