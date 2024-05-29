@@ -19,7 +19,9 @@ from .utils import (
                     convert_date_to_mm_aaaa,
                     word_counter,
                     does_it_contain_money,
-                    calculate_months_to_consider)
+                    calculate_months_to_consider,
+                    validate_input
+)
 
 
 class NewsBrowser:
@@ -73,22 +75,38 @@ class NewsBrowser:
         """
         logger.info("Starting 'run' function")
 
-        # Obtaining WorkItem Data
-        variables = self.workitems.get_work_item_variables()
-        search_phrase = variables.get("search_phrase")
-        news_category = variables.get("news_category")
-        num_months = variables.get("num_months")
+        # # Obtaining WorkItem Data
+        # variables = self.workitems.get_work_item_variables()
+        # search_phrase = variables.get("search_phrase")
+        # news_category = variables.get("news_category")
+        # num_months = variables.get("num_months")
 
-        # if os.name == "nt":
-        #     search_phrase = "Trump/ clash"
-        #     news_category = "World & Nation"
-        #     num_months = 5
-        # else:
-        #     variables = self.workitems.get_work_item_variables()
-        #     search_phrase = variables.get("search_phrase")
-        #     news_category = variables.get("news_category")
-        #     num_months = variables.get("num_months")
+        if os.name == "nt":
+            search_phrase = "Trump/"
+            news_category = "World & Nation"
+            num_months = 1
+        else:
+            variables = self.workitems.get_work_item_variables()
+            search_phrase = variables.get("search_phrase")
+            news_category = variables.get("news_category")
+            num_months = variables.get("num_months")
 
+        input_data_to_print = {
+            "search_phrase": search_phrase,
+            "news_category": news_category,
+            "num_months": num_months
+        }
+        logger.info(json.dumps(input_data_to_print, indent=4, sort_keys=False))
+
+        # We validate the input data
+        is_input_correct = validate_input(input_data_to_print)
+        if is_input_correct:
+            logger.info(f"The value num_months:'{num_months}' is a correct input")
+        else:
+            logger.warning(f"The value num_months:'{num_months}' is NOT a correct input")
+            return
+        
+        # Now, after input validation, we start the process
         news_url = "https://www.latimes.com/"
         self.open_news_site(news_url)
         

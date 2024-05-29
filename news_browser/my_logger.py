@@ -3,7 +3,7 @@ import logging
 
 # Here we create a logger
 logger = logging.getLogger('challenge_logger')
-logger.setLevel(logging.DEBUG)  # Nivel global del logger
+logger.setLevel(logging.INFO)  # Nivel global del logger
 
 # We create a handler for the console
 console_handler = logging.StreamHandler()
