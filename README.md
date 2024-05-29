@@ -75,24 +75,76 @@ The project is organized as follows:
     - **tests/test_utils.py** : Runs unitary tests for test_utils.py functions.
 - **main.py**: The main of our process.
 
-### Clases y Funciones
+## How to run it?
 
-#### Clase `NombreDeClase1`
-- **Descripción**: Esta clase se encarga de [descripción general de la clase].
-- **Funciones**:
-  - `funcion1`: Realiza [breve descripción de la función].
-  - `funcion2`: Se encarga de [breve descripción de la función].
+### The input (Important)
 
-#### Clase `NombreDeClase2`
-- **Descripción**: Esta clase gestiona [descripción general de la clase].
-- **Funciones**:
-  - `funcion3`: Realiza [breve descripción de la función].
-  - `funcion4`: Se encarga de [breve descripción de la función].
+The code is running on Robocorp Cloud with WorkItems, but locally is running with local variables.
 
-### Decisiones de Diseño
+Why does it run with local variables when running on my PC? Basically because at the date of today (May 29, 2024) I did not know how to correctly set the work items to run locally, but I did not want that to stop me. But I will find out how. Dont worry.
 
-- **Decisión 1**: Opté por usar [patrón de diseño/tecnología] debido a [razones].
-- **Decisión 2**: Implementé [función/característica] de esta manera porque [razones].
+Anyways, the work item is configured as this:
+```
+{
+    "search_phrase": "Messi",
+    "news_category": "Sports",
+    "num_months": 5
+}
+```
+
+### Running it Manually (Or in your PC)
+
+You just need to go to the `news_browser/browser.py` and:
+- Comment this lines:
+
+        # Obtaining WorkItem Data
+        variables = self.workitems.get_work_item_variables()
+        search_phrase = variables.get("search_phrase")
+        news_category = variables.get("news_category")
+        num_months = variables.get("num_months")
+
+- Uncomment this other lines:
+
+        # if os.name == "nt":
+        #     search_phrase = "old trafford"
+        #     news_category = "2007 California Wildfires"
+        #     num_months = 1000
+        # else:
+        #     variables = self.workitems.get_work_item_variables()
+        #     search_phrase = variables.get("search_phrase")
+        #     news_category = variables.get("news_category")
+        #     num_months = variables.get("num_months")
+
+That should be enough for you to test it correctly :)
+
+### Running it on Robocorp Cloud
+In the Workspace you will find 2 different Tasks and 2 different Processes:
+- Tasks
+    - Challenge Task Package (The main Task, linked to the main branch of the GitHub robot)
+    - Dev Task (The dev Task, linked to the dev branch of the GitHub robot)
+- Processes
+    - Challenge Process (The main Process, the one you should run)
+    - Dev Process (The dev Process, you can run it but it is mainly for debugging before I post the changes to the main branch on GitHub)
+    
+
+<!--### Clases y Funciones-->
+
+<!--#### Clase `NombreDeClase1`-->
+<!--- **Descripción**: Esta clase se encarga de [descripción general de la clase].-->
+<!--- **Funciones**:-->
+<!--  - `funcion1`: Realiza [breve descripción de la función].-->
+<!--  - `funcion2`: Se encarga de [breve descripción de la función].-->
+
+<!--#### Clase `NombreDeClase2`-->
+<!--- **Descripción**: Esta clase gestiona [descripción general de la clase].-->
+<!--- **Funciones**:-->
+<!--  - `funcion3`: Realiza [breve descripción de la función].-->
+<!--  - `funcion4`: Se encarga de [breve descripción de la función].-->
+
+<!--### Decisiones de Diseño-->
+
+<!--- **Decisión 1**: Opté por usar [patrón de diseño/tecnología] debido a [razones].-->
+<!--- **Decisión 2**: Implementé [función/característica] de esta manera porque [razones].-->
 
 ## Possible Improvements or Suggestions/Feedback
 
@@ -110,7 +162,7 @@ Although the project meets most of the requirements, there are several areas tha
 
 ## Conclusions
 
-This was pretty much a great challenge for me, took me more than I would have spected, but just because I had to refactor Selenium logic for this challenge, as I said, I am not an expert on RPA.Browser.Selenium even if I have user Robocorp for more than 3 years now, but being a wrapper, it is not a library of my choice when coding.
+This was pretty much a great challenge for me, took me more than I would have spected, but just because I had to refactor Selenium logic for this challenge, as I said, I am not an expert on RPA.Browser.Selenium even if I have used Robocorp for more than 3 years now, but being a wrapper, it is not a library of my choice when coding.
 
 I had a good time but I also put a good amount of time into trying to make the code correct, useful and usable, as well as well structured and readable.
 
