@@ -57,6 +57,12 @@ class ExcelCreator:
         ----------
         news_data : list of dict
             List of dictionaries containing the news data.
+        search_phrase : list of dict
+            Text with the search phrase.
+        news_category : list of dict
+            The desired category of the search.
+        num_months : list of dict
+            Number of months wanted, counting the current one.
 
         Returns
         -------

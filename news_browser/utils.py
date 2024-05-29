@@ -172,7 +172,7 @@ def clean_text(text):
 
     Returns
     -------
-    clean_text
+    str
         The text already clean.
     """ 
     # Remove special characters and spaces

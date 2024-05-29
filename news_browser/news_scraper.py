@@ -48,8 +48,8 @@ class NewsScraper:
         ----------
         browser : RPA.Browser.Selenium.Browser
             The Selenium Browser instance used to interact with the website.
-        config : dict
-            Configuration dictionary containing search parameters and other settings.
+        workitems : json
+            Workitems json containing search parameters and other settings.
         """
         self.browser = browser
         self.workitems = workitems
