@@ -45,7 +45,7 @@ class ImageDownloader:
         files = glob.glob(f"{self.imgs_dir}*.jpg")
         for f in files:
             os.remove(f)
-        logger.info("All Image Files Cleared")
+        logger.info(f"All previous Image Files from {self.imgs_dir} directory cleared")
 
     def download_images(self, news_data):
         """
@@ -62,7 +62,12 @@ class ImageDownloader:
         """
         logger.info("Starting 'download_images' function")
 
-        logger.info("Creating the necessary Excel Files")
+        # Check if there are any news items of interest
+        if not any(item["bool"] for item in news_data):
+            logger.info("No news items of interest. No images downloaded.")
+            return
+
+        logger.info("Creating the necessary Image Files")
         # Once we have the "news_data" list of dictionaries, we iterate over it
         for item in news_data:
             # Here we obtain the "bool" value of our current dictionay as well as its url

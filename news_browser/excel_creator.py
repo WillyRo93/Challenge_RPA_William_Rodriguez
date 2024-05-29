@@ -46,7 +46,7 @@ class ExcelCreator:
         files = glob.glob(f"{self.excel_files_dir}*.xlsx")
         for f in files:
             os.remove(f)
-        logger.info("All Excel Files Cleared")
+        logger.info(f"All previous Excel Files from {self.excel_files_dir} directory cleared")
 
     def create_excel(self, news_data):
         """
@@ -62,6 +62,11 @@ class ExcelCreator:
         None
         """
         logger.info("Starting 'create_excel' function")
+
+        # Check if there are any news items of interest
+        if not any(item["bool"] for item in news_data):
+            logger.warning("No news items of interest. No Excel file created.")
+            return
 
         # Creating a new Excel Workbook
         wb = openpyxl.Workbook()
