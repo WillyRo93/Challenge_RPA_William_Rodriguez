@@ -179,6 +179,8 @@ In the Workspace you will find 2 different Tasks and 2 different Processes:
     }
     ```
 - A search that goes to the free limit (Since we need a subscription to read more than 10 pages)
+ 
+  NOTE: I noticed that you can not upload more than 50 files to the RoboCloud Ouput so this may be a thing to take care on
     ```
     {
         "search_phrase": "Trump",
