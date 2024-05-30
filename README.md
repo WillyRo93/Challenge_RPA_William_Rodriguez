@@ -79,9 +79,11 @@ The project is organized as follows:
 
 ### The input (Important)
 
-The code is running on Robocorp Cloud with WorkItems, but locally is running with local variables.
+~The code is running on Robocorp Cloud with WorkItems, but locally is running with local variables.~
 
-Why does it run with local variables when running on my PC? Basically because at the date of today (May 29, 2024) I did not know how to correctly set the work items to run locally, but I did not want that to stop me. But I will find out how. Dont worry. The thing is that the [Documentation Page to Developing with work items locally](https://robocorp.com/docs/development-guide/control-room/work-items#developing-with-work-items-locally) is currently on maintenance, Robocorp is making a reconstruction on their documentation since they are changing everythin to Python only.
+~Why does it run with local variables when running on my PC? Basically because at the date of today (May 29, 2024) I did not know how to correctly set the work items to run locally, but I did not want that to stop me. But I will find out how. Dont worry. The thing is that the [Documentation Page to Developing with work items locally](https://robocorp.com/docs/development-guide/control-room/work-items#developing-with-work-items-locally) is currently on maintenance, Robocorp is making a reconstruction on their documentation since they are changing everythin to Python only.~
+
+UPDATE: Finally found how to set it, with the `devdata/work-items-in/input_data/work-items.json` file you can search anything you want if you are using the Robocorp Extension for Visual Studio. Literally couldnt sleep until I found how to set the local work items.
 
 Anyways, the work item is configured as this:
 ```
