@@ -36,7 +36,9 @@ Here the steps of the challenge and my progress in each of them are detailed.
 5. **Store in an Excel File: [Title, Date, Description(if available), Picture Filename, Count of search phrases in the title and description, True or False, depending on whether the title or description contains any amount of money(Possible formats: $11.1 | $111,111.11 | 11 dollars | 11 USD)]**
    - [x] Done
 6. **Download the news picture and specify the file name in the Excel file**
+   - [x] Done
 7. **Follow steps 4-6 for all news that falls within the required time period**
+   - [x] Done
 
 ### Another Considerations
 1. **Please leverage pure Python**
@@ -69,11 +71,16 @@ The project is organized as follows:
     - **/news_browser/excel_creator.py**: Contains a class to create Excel files from news data.
     - **/news_browser/my_logger.py**: Specifies the log configurations.
     - **/news_browser/news_scraper.py**: Contains a class to scrape news articles from a website using Selenium.
-- **/tests**: Contains the unit tests. (Partially, not every function is tested)
-    - **tests/automated_test.py** : Runs an automated test.
-    - **tests/test_excel_creator.py** : Runs unitary tests for excel_creator.py functions.
-    - **tests/test_utils.py** : Runs unitary tests for test_utils.py functions.
-- **main.py**: The main of our process.
+    - **/news_browser/utils.py**: Contains the utility functions.
+- **/testing**: Contains the unit tests. (Partially, not every function is tested)
+    - **testing/automated_test.py** : Runs an automated test.
+    - **testing/test_browser.py** : Runs unitary tests for browser.py functions.
+    - **testing/test_excel_creator.py** : Runs unitary tests for excel_creator.py functions.
+    - **testing/test_image_downloader.py** : Runs unitary tests for image_downloader.py functions.
+    - **testing/test_news_scraper.py** : Runs unitary tests for news_scraper.py functions.
+    - **testing/test_utils.py** : Runs unitary tests for utils.py functions.
+- **main.py**: The main process of our robot.
+- **test.py**: An automated test for (almost)  every class and function.
 
 ## How to run it?
 
@@ -96,6 +103,7 @@ Anyways, the work item is configured as this:
 
 ### Running it Manually (Or in your PC)
 
+#### 1st Option 
 You just need to go to the `news_browser/browser.py` and:
 - Comment this lines:
 
@@ -114,6 +122,9 @@ You just need to go to the `news_browser/browser.py` and:
 
 
 That should be enough for you to test it correctly :)
+
+#### 2nd Option 
+UPDATE: Since I figured out how to correctly set the WorkItems locally, you just need to run it in Visual Studio with the Robocorp Extension and taking the `devdata/work-items-in/input_data/work-items.json` as the input when the running task ask for the input.
 
 ### Running it on Robocorp Cloud
 In the Workspace you will find 2 different Tasks and 2 different Processes:
