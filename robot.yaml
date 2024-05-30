@@ -4,6 +4,8 @@
 tasks:
   Run Task:
     shell: python -m robocorp.tasks run main.py
+  Run AutomatedTestTask:
+    shell: python -m robocorp.tasks run test.py
 
 environmentConfigs:
   - environment_windows_amd64_freeze.yaml

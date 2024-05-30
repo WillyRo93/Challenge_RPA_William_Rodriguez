@@ -1,13 +1,15 @@
-import unittest
+# Standard Python library imports
 import os
 import sys
+import unittest
 from unittest.mock import patch, MagicMock
 
-# Agregar el directorio del proyecto al path de Python
+# Taking the correct directory to import the files
 current_dir = os.path.dirname(os.path.abspath(__file__))
 project_dir = os.path.dirname(current_dir)
 sys.path.append(project_dir)
 
+# Local module imports
 from news_browser.excel_creator import ExcelCreator
 
 class TestExcelCreator(unittest.TestCase):
@@ -17,7 +19,7 @@ class TestExcelCreator(unittest.TestCase):
     @patch("os.makedirs")
     def test_init_creates_directory(self, mock_makedirs):
         # Arrange
-        excel_dir = 'output/excel_files/'
+        excel_dir = 'output/'
 
         # Act
         creator = ExcelCreator()
@@ -26,7 +28,7 @@ class TestExcelCreator(unittest.TestCase):
         mock_makedirs.assert_called_once_with(excel_dir, exist_ok=True)
 
     @patch("os.remove")
-    @patch("glob.glob", return_value=["output/excel_files/file1.xlsx", "output/excel_files/file2.xlsx"])
+    @patch("glob.glob", return_value=["output/file1.xlsx", "output/file2.xlsx"])
     def test_clear_excel_files(self, mock_glob, mock_remove):
         # Arrange
 
@@ -34,9 +36,9 @@ class TestExcelCreator(unittest.TestCase):
         self.creator.clear_excel_files()
 
         # Assert
-        mock_glob.assert_called_once_with("output/excel_files/*")
-        mock_remove.assert_any_call("output/excel_files/file1.xlsx")
-        mock_remove.assert_any_call("output/excel_files/file2.xlsx")
+        mock_glob.assert_called_once_with("output/*.xlsx")
+        mock_remove.assert_any_call("output/file1.xlsx")
+        mock_remove.assert_any_call("output/file2.xlsx")
 
     @patch("openpyxl.Workbook.save")
     def test_create_excel(self, mock_save):
@@ -47,11 +49,15 @@ class TestExcelCreator(unittest.TestCase):
             {"bool": True, "title": "Title 3", "date": "Date 3", "description": "Description 3", "image_path": "Path 3", "phrase_matches": 3, "contain_money": True}
         ]
 
+        search_phrase = "Messi"
+        news_category = "Sports"
+        num_months = 2
+
         # Act
-        self.creator.create_excel(news_data)
+        self.creator.create_excel(news_data, search_phrase, news_category, num_months)
 
         # Assert
-        mock_save.assert_called_once_with("output/excel_files/all_news_data.xlsx")
+        mock_save.assert_called_once_with(f"output/{search_phrase}_{news_category}_{num_months}.xlsx")
 
 if __name__ == "__main__":
     unittest.main()

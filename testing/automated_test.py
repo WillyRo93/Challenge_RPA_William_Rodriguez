@@ -2,8 +2,8 @@ import unittest
 import os
 
 # Importa todas las pruebas unitarias
-from test_utils import TestUtils
-# from test_image_downloader import TestImageDownloader
+from .test_utils import TestUtils
+from test_image_downloader import TestImageDownloader
 from test_excel_creator import TestExcelCreator
 # from test_browser import TestNewsBrowser
 # from test_news_scraper import TestNewsScraper
@@ -15,7 +15,7 @@ def run_tests():
     # Agrega las pruebas unitarias de cada módulo al TestSuite
     suite = unittest.TestSuite()
     suite.addTests(loader.loadTestsFromTestCase(TestUtils))
-    # suite.addTests(loader.loadTestsFromTestCase(TestImageDownloader))
+    suite.addTests(loader.loadTestsFromTestCase(TestImageDownloader))
     suite.addTests(loader.loadTestsFromTestCase(TestExcelCreator))
     # suite.addTests(loader.loadTestsFromTestCase(TestNewsBrowser))
     # suite.addTests(loader.loadTestsFromTestCase(TestNewsScraper))
